@@ -2,7 +2,7 @@
 
 (add-to-list 'package-archives
              '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
+(unless package--initialized (package-initialize t))
 
 (eval-when-compile
   (add-to-list 'load-path "~/use-package")
@@ -14,7 +14,7 @@
 (use-package ido-vertical-mode :ensure t)
 (use-package smex :ensure t)
 (use-package underwater-theme :ensure t)
-  
+
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
 (setq-default default-tab-width 2)
@@ -29,6 +29,9 @@
 (setq-default gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
+(setq-default initial-buffer-choice (dired default-directory))
+
+(require 'ido-vertical-mode)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
 (load-theme 'underwater t)
