@@ -14,6 +14,7 @@
 (use-package ido-vertical-mode :ensure t)
 (use-package smex :ensure t)
 (use-package underwater-theme :ensure t)
+(use-package projectile :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -32,6 +33,7 @@
 (setq-default initial-buffer-choice (dired default-directory))
 
 (require 'ido-vertical-mode)
+(require 'projectile)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
 (load-theme 'underwater t)
@@ -41,6 +43,7 @@
 (tool-bar-mode -1)
 (ido-mode)
 (ido-vertical-mode)
+(projectile-mode +1)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
