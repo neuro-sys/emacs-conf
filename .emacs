@@ -27,6 +27,7 @@
 (setq-default gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
+(setq-default ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
 (load-theme 'wombat)
@@ -34,6 +35,7 @@
 (column-number-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(ido-mode)
 
 (load "~/.emacs.d/ediff-disable-themes.el")
 (load "~/.emacs.d/flycheck-typescript-eslint.el")
