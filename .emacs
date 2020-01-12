@@ -13,6 +13,7 @@
 (use-package queue :ensure t)
 (use-package ido-vertical-mode :ensure t)
 (use-package smex :ensure t)
+(use-package underwater-theme :ensure t)
   
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -30,7 +31,7 @@
 (setq-default inhibit-startup-screen t)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
-(load-theme 'wombat)
+(load-theme 'underwater t)
 (global-display-line-numbers-mode)
 (column-number-mode)
 (menu-bar-mode -1)
