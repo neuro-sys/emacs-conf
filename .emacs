@@ -11,7 +11,8 @@
 (use-package flycheck :ensure t :init (global-flycheck-mode))
 (use-package typescript-mode :ensure t)
 (use-package queue :ensure t)
-
+(use-package ido-vertical-mode :ensure t)
+(use-package smex :ensure t)
   
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -27,7 +28,6 @@
 (setq-default gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
-(setq-default ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
 (load-theme 'wombat)
@@ -36,6 +36,11 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (ido-mode)
+(ido-vertical-mode)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (load "~/.emacs.d/ediff-disable-themes.el")
 (load "~/.emacs.d/flycheck-typescript-eslint.el")
