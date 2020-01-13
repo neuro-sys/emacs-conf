@@ -15,6 +15,7 @@
 (use-package smex :ensure t)
 (use-package underwater-theme :ensure t)
 (use-package projectile :ensure t)
+(use-package auto-complete :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -30,12 +31,11 @@
 (setq-default gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
-(setq-default initial-buffer-choice (dired default-directory))
 
 (require 'ido-vertical-mode)
 (require 'projectile)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 160)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
 (load-theme 'underwater t)
 (global-display-line-numbers-mode)
 (column-number-mode)
