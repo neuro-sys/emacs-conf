@@ -44,6 +44,7 @@
 (ido-mode)
 (ido-vertical-mode)
 (projectile-mode +1)
+(global-auto-complete-mode t)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
