@@ -49,6 +49,9 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
+(add-to-list 'ac-modes 'typescript-mode)
 (load "~/.emacs.d/ediff-disable-themes.el")
 (load "~/.emacs.d/flycheck-typescript-eslint.el")
