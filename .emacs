@@ -34,8 +34,9 @@
 
 (require 'ido-vertical-mode)
 (require 'projectile)
+(require 'auto-complete)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 120)
 (load-theme 'underwater t)
 (global-display-line-numbers-mode)
 (column-number-mode)
