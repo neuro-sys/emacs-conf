@@ -16,6 +16,7 @@
 (use-package underwater-theme :ensure t)
 (use-package projectile :ensure t)
 (use-package auto-complete :ensure t)
+(use-package magit :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -35,6 +36,7 @@
 (require 'ido-vertical-mode)
 (require 'projectile)
 (require 'auto-complete)
+(require 'tide)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
 (load-theme 'underwater t)
@@ -46,12 +48,16 @@
 (ido-vertical-mode)
 (projectile-mode +1)
 (global-auto-complete-mode t)
+(tide-setup)
+(global-auto-revert-mode 1)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(global-set-key (kbd "C-c f") 'projectile-find-file-in-directory)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 (add-to-list 'ac-modes 'typescript-mode)
 (load "~/.emacs.d/ediff-disable-themes.el")
@@ -65,4 +71,3 @@
       (save-buffers-kill-terminal)))
 
 (global-set-key (kbd "C-x C-c") 'save-buffers-kill-terminal-prompt)
-
