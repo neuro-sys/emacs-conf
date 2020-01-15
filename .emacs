@@ -17,6 +17,7 @@
 (use-package projectile :ensure t)
 (use-package auto-complete :ensure t)
 (use-package magit :ensure t)
+(use-package multiple-cursors :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -48,7 +49,6 @@
 (ido-vertical-mode)
 (projectile-mode +1)
 (global-auto-complete-mode t)
-(tide-setup)
 (global-auto-revert-mode 1)
 
 (global-set-key (kbd "M-x") 'smex)
@@ -58,6 +58,10 @@
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 (global-set-key (kbd "C-c f") 'projectile-find-file-in-directory)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (add-to-list 'ac-modes 'typescript-mode)
 (load "~/.emacs.d/ediff-disable-themes.el")
