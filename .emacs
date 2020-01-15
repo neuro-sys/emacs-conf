@@ -36,7 +36,7 @@
 (require 'projectile)
 (require 'auto-complete)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 120)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
 (load-theme 'underwater t)
 (global-display-line-numbers-mode)
 (column-number-mode)
@@ -56,3 +56,13 @@
 (add-to-list 'ac-modes 'typescript-mode)
 (load "~/.emacs.d/ediff-disable-themes.el")
 (load "~/.emacs.d/flycheck-typescript-eslint.el")
+
+(add-hook 'typescript-mode-hook 'tide-mode)
+
+(defun save-buffers-kill-terminal-prompt ()
+  (interactive)
+  (if (y-or-n-p "Quit?")
+      (save-buffers-kill-terminal)))
+
+(global-set-key (kbd "C-x C-c") 'save-buffers-kill-terminal-prompt)
+
