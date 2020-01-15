@@ -18,6 +18,7 @@
 (use-package auto-complete :ensure t)
 (use-package magit :ensure t)
 (use-package multiple-cursors :ensure t)
+(use-package tide :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -30,16 +31,15 @@
 (setq-default custom-file (concat user-emacs-directory "custom"))
 (setq-default flycheck-idle-change-delay 1.0)
 (setq-default erc-hide-list (list "JOIN" "PART" "QUIT"))
-(setq-default gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
 
 (require 'ido-vertical-mode)
 (require 'projectile)
 (require 'auto-complete)
-(require 'tide)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 120)
 (load-theme 'underwater t)
 (global-display-line-numbers-mode)
 (column-number-mode)
