@@ -39,8 +39,8 @@
 (require 'projectile)
 (require 'auto-complete)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 120)
-(load-theme 'underwater t)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
+(load-theme 'wombat t)
 (global-display-line-numbers-mode)
 (column-number-mode)
 (menu-bar-mode -1)
@@ -64,6 +64,9 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 (add-to-list 'ac-modes 'typescript-mode)
+(add-to-list 'grep-find-ignored-directories "node_modules")
+(add-to-list 'grep-find-ignored-directories "coverage")
+
 (load "~/.emacs.d/ediff-disable-themes.el")
 (load "~/.emacs.d/flycheck-typescript-eslint.el")
 
