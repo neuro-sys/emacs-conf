@@ -1,7 +1,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 (unless package--initialized (package-initialize t))
 
 (eval-when-compile
@@ -67,8 +67,8 @@
 (add-to-list 'grep-find-ignored-directories "node_modules")
 (add-to-list 'grep-find-ignored-directories "coverage")
 
-(load "~/.emacs.d/ediff-disable-themes.el")
-(load "~/.emacs.d/flycheck-typescript-eslint.el")
+(load "~/emacs-conf/ediff-disable-themes.el")
+(load "~/emacs-conf/flycheck-typescript-eslint.el")
 
 (add-hook 'typescript-mode-hook 'tide-mode)
 
