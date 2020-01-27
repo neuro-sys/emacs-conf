@@ -1,12 +1,8 @@
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (unless package--initialized (package-initialize t))
-
-(eval-when-compile
-  (add-to-list 'load-path "~/use-package")
-  (require 'use-package))
+(eval-when-compile (add-to-list 'load-path "~/use-package") (require 'use-package))
 
 (use-package flycheck :ensure t :init (global-flycheck-mode))
 (use-package typescript-mode :ensure t)
@@ -70,12 +66,6 @@
 
 (load "~/emacs-conf/ediff-disable-themes.el")
 (load "~/emacs-conf/flycheck-typescript-eslint.el")
+(load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
 
 (add-hook 'typescript-mode-hook 'tide-mode)
-
-(defun save-buffers-kill-terminal-prompt ()
-  (interactive)
-  (if (y-or-n-p "Quit?")
-      (save-buffers-kill-terminal)))
-
-(global-set-key (kbd "C-x C-c") 'save-buffers-kill-terminal-prompt)
