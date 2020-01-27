@@ -62,6 +62,7 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (add-to-list 'ac-modes 'typescript-mode)
 (add-to-list 'grep-find-ignored-directories "node_modules")
