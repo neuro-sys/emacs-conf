@@ -24,7 +24,7 @@
 (setq-default typescript-indent-level 2)
 (setq-default backup-directory-alist '(("." . "~/.emacs-file-backups")))
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-(setq-default custom-file (concat user-emacs-directory "custom"))
+(setq-default custom-file "~/.emacs-custom.el")
 (setq-default flycheck-idle-change-delay 1.0)
 (setq-default erc-hide-list (list "JOIN" "PART" "QUIT"))
 (setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
@@ -63,6 +63,7 @@
 (add-to-list 'ac-modes 'typescript-mode)
 (add-to-list 'grep-find-ignored-directories "node_modules")
 (add-to-list 'grep-find-ignored-directories "coverage")
+(add-to-list 'grep-find-ignored-directories "build")
 
 (load "~/emacs-conf/ediff-disable-themes.el")
 (load "~/emacs-conf/flycheck-typescript-eslint.el")
