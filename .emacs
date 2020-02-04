@@ -36,7 +36,7 @@
 (require 'projectile)
 (require 'auto-complete)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 140)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
 (load-theme 'wombat t)
 (global-display-line-numbers-mode)
 (column-number-mode)
@@ -66,8 +66,7 @@
 (add-to-list 'grep-find-ignored-directories "coverage")
 (add-to-list 'grep-find-ignored-directories "build")
 
-(load "C:/Users/neurosys/emacs-conf/ediff-disable-themes.el")
-(load "C:/Users/neurosys/emacs-conf/flycheck-typescript-eslint.el")
-(load "C:/Users/neurosys/emacs-conf/save-buffers-kill-terminal-prompt.el")
+(load "~/emacs-conf/flycheck-typescript-eslint.el")
+(load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
 
 (add-hook 'typescript-mode-hook 'tide-mode)
