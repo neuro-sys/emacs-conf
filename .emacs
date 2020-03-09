@@ -31,13 +31,14 @@
 (setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
+(setq-default inhibit-compacting-font-caches t)
 
 (require 'ido-vertical-mode)
 (require 'projectile)
 (require 'auto-complete)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
-(load-theme 'wombat t)
+(load-theme 'deeper-blue t)
 (global-display-line-numbers-mode)
 (column-number-mode)
 (menu-bar-mode -1)
@@ -68,5 +69,9 @@
 
 (load "~/emacs-conf/flycheck-typescript-eslint.el")
 (load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
+
+;;(load "C:/Users/neurosys/emacs-conf/ediff-disable-themes.el")
+;;(load "C:/Users/neurosys/emacs-conf/flycheck-typescript-eslint.el")
+;;(load "C:/Users/neurosys/emacs-conf/save-buffers-kill-terminal-prompt.el")
 
 (add-hook 'typescript-mode-hook 'tide-mode)
