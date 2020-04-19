@@ -62,6 +62,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-h f") #'helpful-callable)
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+(global-set-key (kbd "C-h F") #'helpful-function)
+(global-set-key (kbd "C-h C") #'helpful-command)
 
 (add-to-list 'ac-modes 'typescript-mode)
 (add-to-list 'grep-find-ignored-directories "node_modules")
