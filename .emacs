@@ -16,6 +16,7 @@
 (use-package multiple-cursors :ensure t)
 (use-package tide :ensure t)
 (use-package markdown-mode :ensure t)
+(use-package helpful :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
