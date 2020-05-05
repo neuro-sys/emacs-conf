@@ -81,19 +81,36 @@
 ;; (add-hook 'typescript-mode-hook 'tide-mode)
 (put 'upcase-region 'disabled nil)
 
+;; M-x erc-start to connect
+;; M-p to prompt ZNC password
+;; Once the server buffer is killed, kills all erc-mode buffers
+
 (require 'erc)
 
+(defconst *erc-my-user-name* "neuro_sys")
+(defconst *erc-my-server-name* "neuro.gereksiz.org")
+(defconst *erc-my-server-port* 8888)
+(defconst *erc-my-server-buffer-name* (concat *erc-my-server-name* ":" (number-to-string *erc-my-server-port*)))
+
 (defun erc-start ()
-  "Connect to IRC."
   (interactive)
-    (erc-tls :server "neuro.gereksiz.org" :port 8888
-             :nick "neuro_sys" :full-name "neuro_sys"))
+    (erc-tls :server *erc-my-server-name* :port *erc-my-server-port*
+             :nick *erc-my-user-name* :full-name *erc-my-user-name*))
 
 (defun erc-pass ()
   (interactive)
-  (with-current-buffer (get-buffer "neuro.gereksiz.org:8888")
+  (with-current-buffer (get-buffer *erc-my-server-buffer-name*)
     (let ((pass (read-passwd "Password:")))
-      (erc-send-input (concat "/quote PASS neuro_sys:" pass)))))
+      (erc-send-input (concat "/quote PASS " *erc-my-user-name* ":" pass)))))
 
 (add-hook 'erc-mode-hook
           (lambda () (local-set-key (kbd "M-p") #'erc-pass)))
+
+(with-current-buffer (elt (buffer-list) 0) major-mode)
+
+(add-hook 'erc-kill-server-hook
+          (lambda ()
+            (dolist (buffer (buffer-list))
+              (if (and (string= (with-current-buffer buffer major-mode) "erc-mode")
+                       (not (string= (buffer-name buffer) *erc-my-server-buffer-name*)))
+                  (kill-buffer buffer)))))
