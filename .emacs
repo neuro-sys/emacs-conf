@@ -105,12 +105,3 @@
 
 (add-hook 'erc-mode-hook
           (lambda () (local-set-key (kbd "M-p") #'erc-pass)))
-
-(with-current-buffer (elt (buffer-list) 0) major-mode)
-
-(add-hook 'erc-kill-server-hook
-          (lambda ()
-            (dolist (buffer (buffer-list))
-              (if (and (string= (with-current-buffer buffer major-mode) "erc-mode")
-                       (not (string= (buffer-name buffer) *erc-my-server-buffer-name*)))
-                  (kill-buffer buffer)))))
