@@ -105,3 +105,11 @@
 
 (add-hook 'erc-mode-hook
           (lambda () (local-set-key (kbd "M-p") #'erc-pass)))
+
+(require 'desktop)
+
+(when (display-graphic-p)
+  (desktop-save-mode 1)
+  ())
+
+(add-to-list 'desktop-globals-to-save 'register-alist)
