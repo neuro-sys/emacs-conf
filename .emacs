@@ -16,7 +16,6 @@
 (use-package multiple-cursors :ensure t)
 (use-package tide :ensure t)
 (use-package markdown-mode :ensure t)
-;(use-package helpful :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -50,6 +49,8 @@
 (projectile-mode +1)
 (global-auto-complete-mode t)
 (global-auto-revert-mode 1)
+(scroll-bar-mode -1)
+(toggle-truncate-lines -1)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -63,20 +64,14 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-x g") 'magit-status)
-;; (global-set-key (kbd "C-h f") #'helpful-callable)
-;; (global-set-key (kbd "C-h v") #'helpful-variable)
-;; (global-set-key (kbd "C-h k") #'helpful-key)
-;; (global-set-key (kbd "C-c C-d") #'helpful-at-point)
-;; (global-set-key (kbd "C-h F") #'helpful-function)
-;; (global-set-key (kbd "C-h C") #'helpful-command)
 
 (add-to-list 'ac-modes 'typescript-mode)
 (add-to-list 'grep-find-ignored-directories "node_modules")
 (add-to-list 'grep-find-ignored-directories "coverage")
 (add-to-list 'grep-find-ignored-directories "build")
 
-(load "~/emacs-conf/flycheck-typescript-eslint.el")
-(load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
+;; (load "~/emacs-conf/flycheck-typescript-eslint.el")
+;; (load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
 
 ;; (add-hook 'typescript-mode-hook 'tide-mode)
 (put 'upcase-region 'disabled nil)
