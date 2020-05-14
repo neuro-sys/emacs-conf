@@ -16,6 +16,7 @@
 (use-package multiple-cursors :ensure t)
 (use-package tide :ensure t)
 (use-package markdown-mode :ensure t)
+(use-package green-phosphor-theme :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -38,8 +39,10 @@
 (require 'projectile)
 (require 'auto-complete)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height 100)
-(load-theme 'deeper-blue t)
+(set-face-attribute 'default nil :family "pxplus ibm vga8" :height (if (eq system-type 'windows-nt)
+                                                                       140
+                                                                     100))
+(load-theme 'green-phosphor t)
 (global-display-line-numbers-mode)
 (column-number-mode)
 (menu-bar-mode -1)
