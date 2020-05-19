@@ -17,6 +17,7 @@
 (use-package tide :ensure t)
 (use-package markdown-mode :ensure t)
 (use-package green-phosphor-theme :ensure t)
+(use-package which-key :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -32,12 +33,13 @@
 (setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
-(setq-default inhibit-compacting-font-caches t)
+;; (setq-default inhibit-compacting-font-caches t)
 (setq-default global-visual-line-mode nil)
 
 (require 'ido-vertical-mode)
 (require 'projectile)
 (require 'auto-complete)
+(require 'which-key)
 
 (set-face-attribute 'default nil :family "pxplus ibm vga8" :height (if (eq system-type 'windows-nt)
                                                                        140
@@ -54,6 +56,7 @@
 (global-auto-revert-mode 1)
 (scroll-bar-mode -1)
 (toggle-truncate-lines -1)
+(which-key-mode)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
