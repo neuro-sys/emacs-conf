@@ -18,6 +18,7 @@
 (use-package markdown-mode :ensure t)
 (use-package green-phosphor-theme :ensure t)
 (use-package which-key :ensure t)
+(use-package undo-tree :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -106,11 +107,3 @@
 
 (add-hook 'erc-mode-hook
           (lambda () (local-set-key (kbd "M-p") #'erc-pass)))
-
-(require 'desktop)
-
-(when (display-graphic-p)
-  (desktop-save-mode 1)
-  ())
-
-(add-to-list 'desktop-globals-to-save 'register-alist)
