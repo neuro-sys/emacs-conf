@@ -34,18 +34,24 @@
 (setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
-;; (setq-default inhibit-compacting-font-caches t)
 (setq-default global-visual-line-mode nil)
+(if (eq system-type 'windows-nt)
+    (setq-default inhibit-compacting-font-caches t))
 
 (require 'ido-vertical-mode)
 (require 'projectile)
 (require 'auto-complete)
 (require 'which-key)
 
-(set-face-attribute 'default nil :family "pxplus ibm vga8" :height (if (eq system-type 'windows-nt)
-                                                                       140
-                                                                     100))
-(load-theme 'green-phosphor t +1)
+(set-face-attribute
+ 'default
+ nil
+ :family
+ "pxplus ibm vga8"
+ :height
+ (if (eq system-type 'windows-nt) 140 100))
+
+(load-theme 'underwater t)
 (global-display-line-numbers-mode +1)
 (column-number-mode +1)
 (menu-bar-mode -1)
@@ -77,16 +83,13 @@
 (add-to-list 'grep-find-ignored-directories "coverage")
 (add-to-list 'grep-find-ignored-directories "build")
 
-;; (load "~/emacs-conf/flycheck-typescript-eslint.el")
-;; (load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
-
-;; (add-hook 'typescript-mode-hook 'tide-mode)
 (put 'upcase-region 'disabled nil)
+
+;; Custom scripts
 
 ;; M-x erc-start to connect
 ;; M-p to prompt ZNC password
 ;; Once the server buffer is killed, kills all erc-mode buffers
-
 (require 'erc)
 
 (defconst *erc-my-user-name* "neuro_sys")
