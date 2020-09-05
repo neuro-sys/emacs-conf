@@ -1,3 +1,7 @@
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
 (require 'package)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -19,6 +23,8 @@
 (use-package green-phosphor-theme :ensure t)
 (use-package which-key :ensure t)
 (use-package undo-tree :ensure t)
+(use-package iedit :ensure t)
+(use-package ace-jump-mode :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -51,17 +57,15 @@
  :height
  (if (eq system-type 'windows-nt) 140 100))
 
+
 (load-theme 'underwater t)
 (global-display-line-numbers-mode +1)
 (column-number-mode +1)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
 (ido-mode +1)
 (ido-vertical-mode)
 (projectile-mode +1)
 (global-auto-complete-mode t)
 (global-auto-revert-mode 1)
-(scroll-bar-mode -1)
 (toggle-truncate-lines -1)
 (which-key-mode +1)
 
