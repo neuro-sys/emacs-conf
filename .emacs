@@ -57,7 +57,6 @@
  :height
  (if (eq system-type 'windows-nt) 140 100))
 
-
 (load-theme 'underwater t)
 (global-display-line-numbers-mode +1)
 (column-number-mode +1)
@@ -68,6 +67,7 @@
 (global-auto-revert-mode 1)
 (toggle-truncate-lines -1)
 (which-key-mode +1)
+(global-undo-tree-mode)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
