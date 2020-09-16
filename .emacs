@@ -25,11 +25,13 @@
 (use-package undo-tree :ensure t)
 (use-package iedit :ensure t)
 (use-package ace-jump-mode :ensure t)
+(use-package helm :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
-(setq-default default-tab-width 2)
+(setq-default c-basic-offset 4)
 (setq-default tab-width 4)
+(setq-default default-tab-width 4)
 (setq-default js-indent-level 2)
 (setq-default typescript-indent-level 2)
 (setq-default backup-directory-alist '(("." . "~/.emacs-file-backups")))
@@ -41,6 +43,8 @@
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 (setq-default inhibit-startup-screen t)
 (setq-default global-visual-line-mode nil)
+(setq-default gc-cons-threshold (* 10 1024 1024))
+
 (if (eq system-type 'windows-nt)
     (setq-default inhibit-compacting-font-caches t))
 
@@ -57,7 +61,6 @@
  :height
  (if (eq system-type 'windows-nt) 140 100))
 
-(load-theme 'underwater t)
 (global-display-line-numbers-mode +1)
 (column-number-mode +1)
 (ido-mode +1)
@@ -65,7 +68,7 @@
 (projectile-mode +1)
 (global-auto-complete-mode t)
 (global-auto-revert-mode 1)
-(toggle-truncate-lines -1)
+(toggle-truncate-lines +1)
 (which-key-mode +1)
 (global-undo-tree-mode)
 
