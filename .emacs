@@ -68,7 +68,7 @@
 (projectile-mode +1)
 (global-auto-complete-mode t)
 (global-auto-revert-mode 1)
-(toggle-truncate-lines +1)
+(toggle-truncate-lines -1)
 (which-key-mode +1)
 (global-undo-tree-mode)
 
