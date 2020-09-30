@@ -98,8 +98,8 @@
 (put 'upcase-region 'disabled nil)
 
 ;; Custom scripts
-(load "save-buffers-kill-terminal-prompt.el")
-(load "z80-mode.el")
-(load "flycheck-typescript-eslint.el")
-(load "erc-bnc.el")
+(load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
+(load "~/emacs-conf/z80-mode.el")
+(load "~/emacs-conf/flycheck-typescript-eslint.el")
+(load "~/emacs-conf/erc-bnc.el")
 #+END_SRC
