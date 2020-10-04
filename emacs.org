@@ -30,6 +30,7 @@
 (use-package iedit :ensure t)
 (use-package ace-jump-mode :ensure t)
 (use-package helm :ensure t)
+(use-package yasnippet :ensure t)
 
 (setq-default visible-bell 0)
 (setq-default indent-tabs-mode nil)
@@ -48,6 +49,7 @@
 (setq-default inhibit-startup-screen t)
 (setq-default global-visual-line-mode nil)
 (setq-default gc-cons-threshold (* 10 1024 1024))
+(setq-default yas-snippet-dirs '("~/emacs-conf/snippets"))
 
 (if (eq system-type 'windows-nt)
     (setq-default inhibit-compacting-font-caches t))
@@ -76,6 +78,7 @@
 (which-key-mode +1)
 (global-undo-tree-mode)
 (load-theme 'wheatgrass)
+(yas-global-mode 1)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -94,7 +97,6 @@
 (add-to-list 'grep-find-ignored-directories "node_modules")
 (add-to-list 'grep-find-ignored-directories "coverage")
 (add-to-list 'grep-find-ignored-directories "build")
-
 (put 'upcase-region 'disabled nil)
 
 ;; Custom scripts
