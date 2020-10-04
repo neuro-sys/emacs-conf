@@ -58,6 +58,7 @@
 (require 'projectile)
 (require 'auto-complete)
 (require 'which-key)
+(require 'yasnippet)
 
 (set-face-attribute
  'default
