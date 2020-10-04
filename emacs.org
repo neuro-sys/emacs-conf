@@ -102,4 +102,10 @@
 (load "~/emacs-conf/z80-mode.el")
 (load "~/emacs-conf/flycheck-typescript-eslint.el")
 (load "~/emacs-conf/erc-bnc.el")
+
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . z80-mode))
+(add-hook 'z80-mode-hook (lambda ()
+  (setq indent-tabs-mode t)
+  (setq tab-width 8)
+))
 #+END_SRC
