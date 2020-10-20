@@ -2,18 +2,25 @@
 #+AUTHOR: Firat Salgur
 #+EMAIL: firat@pm.me
 #+OPTIONS: num:nil
-#+BEGIN_SRC emacs-lisp
 
+Turn off some unused GUI props.
+#+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+#+END_SRC
 
+Add Melpa package repository
+#+BEGIN_SRC emacs-lisp
   (require 'package)
 
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
   (unless package--initialized (package-initialize t))
   (eval-when-compile (add-to-list 'load-path "~/use-package") (require 'use-package))
+#+END_SRC
 
+Make sure we load various packages I use often
+#+BEGIN_SRC emacs-lisp
   (use-package flycheck :ensure t :init (global-flycheck-mode))
   (use-package typescript-mode :ensure t)
   (use-package queue :ensure t)
@@ -35,6 +42,17 @@
     :config
     (load-theme 'vscode-dark-plus t))
 
+  (require 'ido-vertical-mode)
+  (require 'projectile)
+  (require 'auto-complete)
+  (require 'which-key)
+  (require 'yasnippet)
+
+#+END_SRC
+
+Set global variables.
+
+#+BEGIN_SRC emacs-lisp
   (setq-default visible-bell 0)
   (setq-default indent-tabs-mode nil)
   (setq-default c-basic-offset 4)
@@ -53,26 +71,23 @@
   (setq-default global-visual-line-mode nil)
   (setq-default gc-cons-threshold (* 10 1024 1024))
   (setq-default yas-snippet-dirs '("~/emacs-conf/snippets"))
+#+END_SRC
 
+Prevent the Windows bug kicking in.
+#+BEGIN_SRC emacs-lisp
   (if (eq system-type 'windows-nt)
       (setq-default inhibit-compacting-font-caches t))
+#+END_SRC
 
-  (require 'ido-vertical-mode)
-  (require 'projectile)
-  (require 'auto-complete)
-  (require 'which-key)
-  (require 'yasnippet)
+Set font
+#+BEGIN_SRC emacs-lisp
 
   (set-face-attribute 'default nil :family "Consolas")
 
-  ;; (set-face-attribute
-  ;;  'default
-  ;;  nil
-  ;;  :family
-  ;;  "pxplus ibm vga8"
-  ;;  :height
-  ;;  (if (eq system-type 'windows-nt) 140 100))
+#+END_SRC
 
+Turn on modes.
+#+BEGIN_SRC emacs-lisp
   (global-display-line-numbers-mode +1)
   (column-number-mode +1)
   (ido-mode +1)
@@ -83,8 +98,11 @@
   (toggle-truncate-lines -1)
   (which-key-mode +1)
   (global-undo-tree-mode)
-  ;; (load-theme 'wheatgrass)
   (yas-global-mode 1)
+#+END_SRC
+
+Set up keys
+#+BEGIN_SRC emacs-lisp
 
   (global-set-key (kbd "M-x") 'smex)
   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -99,22 +117,26 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
   (global-set-key (kbd "C-x g") 'magit-status)
 
+#+END_SRC
+
+Set some variables
+
+#+BEGIN_SRC emacs-lisp
+
   (add-to-list 'ac-modes 'typescript-mode)
   (add-to-list 'grep-find-ignored-directories "node_modules")
   (add-to-list 'grep-find-ignored-directories "coverage")
   (add-to-list 'grep-find-ignored-directories "build")
   (put 'upcase-region 'disabled nil)
 
-  ;; Custom scripts
+#+END_SRC
+
+Load custom scripts
+#+BEGIN_SRC emacs-lisp
   (load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
   (load "~/emacs-conf/z80-mode.el")
+  (load "~/emacs-conf/z80-loader.el")
   (load "~/emacs-conf/flycheck-typescript-eslint.el")
   (load "~/emacs-conf/erc-bnc.el")
 
-  (add-to-list 'auto-mode-alist '("\\.asm\\'" . z80-mode))
-  (add-hook 'z80-mode-hook (lambda ()
-    (setq indent-tabs-mode t)
-    (setq tab-width 8)
-    ;; (setq indent-line-function 'tab-to-tab-stop)
-  ))
 #+END_SRC

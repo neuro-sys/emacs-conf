@@ -1,0 +1,6 @@
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . z80-mode))
+(add-hook 'z80-mode-hook (lambda ()
+                           (setq indent-tabs-mode t)
+                           (setq tab-width 8)
+                           ;; (setq indent-line-function 'tab-to-tab-stop)
+                           ))
