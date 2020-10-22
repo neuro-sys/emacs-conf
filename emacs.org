@@ -36,9 +36,9 @@ Make sure we load various packages I use often
   (use-package undo-tree :ensure t)
   (use-package iedit :ensure t)
   (use-package ace-jump-mode :ensure t)
-  (use-package helm :ensure t)
   (use-package yasnippet :ensure t)
   (use-package vscode-dark-plus-theme
+  :ensure t
     :config
     (load-theme 'vscode-dark-plus t))
 
@@ -82,7 +82,7 @@ Prevent the Windows bug kicking in.
 Set font
 #+BEGIN_SRC emacs-lisp
 
-  (set-face-attribute 'default nil :family "Consolas")
+  (set-face-attribute 'default nil :family "Consolas" :height 120)
 
 #+END_SRC
 
@@ -91,13 +91,14 @@ Turn on modes.
   (global-display-line-numbers-mode +1)
   (column-number-mode +1)
   (ido-mode +1)
-  (ido-vertical-mode)
+  (ido-everywhere +1)
+  (ido-vertical-mode +1)
   (projectile-mode +1)
   (global-auto-complete-mode t)
   (global-auto-revert-mode 1)
   (toggle-truncate-lines -1)
   (which-key-mode +1)
-  (global-undo-tree-mode)
+  (global-undo-tree-mode +1)
   (yas-global-mode 1)
 #+END_SRC
 
