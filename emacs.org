@@ -1,16 +1,24 @@
-#+TITLE: My Emacs Configuration
-#+AUTHOR: Firat Salgur
-#+EMAIL: firat@pm.me
+#+TITLE: Emacs Configuration
 #+OPTIONS: num:nil
+
+* First things first
+
+Turn off the deprecation warning for 'cl used by many packages
+still. They should be using 'cl-lib instead.
+
+#+BEGIN_SRC emacs-lisp
+(setq byte-compile-warnings '(cl-functions))
+#+END_SRC
 
 Turn off some unused GUI props.
 #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
+  (blink-cursor-mode -1)
 #+END_SRC
 
-Add Melpa package repository
+Add Melpa package repository.
 #+BEGIN_SRC emacs-lisp
   (require 'package)
 
@@ -19,38 +27,150 @@ Add Melpa package repository
   (eval-when-compile (add-to-list 'load-path "~/use-package") (require 'use-package))
 #+END_SRC
 
-Make sure we load various packages I use often
+* Packages
+
+** Flycheck
 #+BEGIN_SRC emacs-lisp
-  (use-package flycheck :ensure t :init (global-flycheck-mode))
-  (use-package typescript-mode :ensure t)
-  (use-package queue :ensure t)
-  (use-package ido-vertical-mode :ensure t)
-  (use-package smex :ensure t)
-  (use-package projectile :ensure t)
-  (use-package auto-complete :ensure t)
-  (use-package magit :ensure t)
-  (use-package multiple-cursors :ensure t)
-  (use-package tide :ensure t)
-  (use-package markdown-mode :ensure t)
-  (use-package which-key :ensure t)
-  (use-package undo-tree :ensure t)
-  (use-package iedit :ensure t)
-  (use-package ace-jump-mode :ensure t)
-  (use-package yasnippet :ensure t)
-  (use-package vscode-dark-plus-theme
-  :ensure t
+  (use-package flycheck
+    :ensure t
     :config
-    (load-theme 'vscode-dark-plus t))
-
-  (require 'ido-vertical-mode)
-  (require 'projectile)
-  (require 'auto-complete)
-  (require 'which-key)
-  (require 'yasnippet)
-
+    (global-flycheck-mode)
+    (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+    (setq-default flycheck-emacs-lisp-load-path 'inherit))
 #+END_SRC
 
-Set global variables.
+** auto-complete
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-complete :ensure t)
+#+END_SRC
+
+** TypeScript
+#+BEGIN_SRC emacs-lisp
+  (use-package typescript-mode
+    :ensure t
+    :config
+    (add-to-list 'ac-modes 'typescript-mode)
+    (setq-default typescript-indent-level 2))
+#+END_SRC
+
+*** Tide
+  #+BEGIN_SRC emacs-lisp
+  (use-package tide :ensure t)
+  #+END_SRC
+
+** Jest
+#+begin_src emacs-lisp
+  (use-package jest
+    :ensure t)
+#+end_src
+** Queue
+  #+BEGIN_SRC emacs-lisp
+  (use-package queue :ensure t)
+  #+END_SRC
+
+** Projectile
+  #+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :config
+    (projectile-mode +1)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  #+END_SRC
+
+** Magit
+  #+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :config
+    (global-set-key (kbd "C-x g") 'magit-status))
+  #+END_SRC
+
+** Multiple cursors
+  #+BEGIN_SRC emacs-lisp
+    (use-package multiple-cursors
+      :ensure t
+      :config
+      (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+      (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+      (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+      (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+  #+END_SRC
+
+** Markdown
+  #+BEGIN_SRC emacs-lisp
+  (use-package markdown-mode :ensure t)
+  #+END_SRC
+
+** which-key
+  #+BEGIN_SRC emacs-lisp
+  (use-package which-key :ensure t)
+  #+END_SRC
+
+** csv-mode
+#+begin_src emacs-lisp
+  (use-package csv-mode
+    :ensure t)
+#+end_src
+** undo-tree
+  #+BEGIN_SRC emacs-lisp
+  (use-package undo-tree :ensure t)
+  #+END_SRC
+
+** iedit
+  #+BEGIN_SRC emacs-lisp
+  (use-package iedit :ensure t)
+  #+END_SRC
+
+** Helm
+  #+BEGIN_SRC emacs-lisp
+  (use-package helm
+    :ensure t
+    :config
+    (helm-mode 1)
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files))
+  #+END_SRC
+
+*** helm-projectile
+  #+BEGIN_SRC emacs-lisp
+  (use-package helm-projectile
+    :ensure t)
+  #+END_SRC
+
+** Yasnippet
+  #+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :config
+    (setq-default yas-snippet-dirs '("~/emacs-conf/snippets")))
+  #+END_SRC
+
+** Scratch
+  #+BEGIN_SRC emacs-lisp
+  (use-package scratch
+    :ensure t
+    :config (global-set-key (kbd "C-c b") 'scratch))
+  #+END_SRC
+
+** Themes
+*** Zenburn
+  #+BEGIN_SRC emacs-lisp
+  (use-package zenburn-theme
+    :ensure t
+    :config (load-theme 'zenburn t))
+  #+END_SRC
+
+*** VScode Dark Plus Theme
+  #+BEGIN_SRC emacs-lisp
+    (use-package vscode-dark-plus-theme
+      :ensure t
+      :config
+      ;; (load-theme 'vscode-dark-plus t)
+      )
+  #+END_SRC
+#+END_SRC
+
+* Global Variables
 
 #+BEGIN_SRC emacs-lisp
   (setq-default visible-bell 0)
@@ -59,41 +179,31 @@ Set global variables.
   (setq-default tab-width 4)
   (setq-default default-tab-width 4)
   (setq-default js-indent-level 2)
-  (setq-default typescript-indent-level 2)
   (setq-default backup-directory-alist '(("." . "~/.emacs-file-backups")))
-  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   (setq-default custom-file "~/.emacs-custom.el")
-  (setq-default flycheck-idle-change-delay 1.0)
   (setq-default erc-hide-list (list "JOIN" "PART" "QUIT"))
   (setq-default gnutls-algorithm-priority "normal:-dhe-rsa")
-  (setq-default flycheck-emacs-lisp-load-path 'inherit)
   (setq-default inhibit-startup-screen t)
   (setq-default global-visual-line-mode nil)
   (setq-default gc-cons-threshold (* 10 1024 1024))
-  (setq-default yas-snippet-dirs '("~/emacs-conf/snippets"))
 #+END_SRC
 
-Prevent the Windows bug kicking in.
+* Windows special treatment
 #+BEGIN_SRC emacs-lisp
   (if (eq system-type 'windows-nt)
       (setq-default inhibit-compacting-font-caches t))
 #+END_SRC
 
-Set font
+* Font
 #+BEGIN_SRC emacs-lisp
 
   (set-face-attribute 'default nil :family "Consolas" :height 120)
 
 #+END_SRC
 
-Turn on modes.
+* Built-in Modes
 #+BEGIN_SRC emacs-lisp
-  (global-display-line-numbers-mode +1)
   (column-number-mode +1)
-  (ido-mode +1)
-  (ido-everywhere +1)
-  (ido-vertical-mode +1)
-  (projectile-mode +1)
   (global-auto-complete-mode t)
   (global-auto-revert-mode 1)
   (toggle-truncate-lines -1)
@@ -102,42 +212,42 @@ Turn on modes.
   (yas-global-mode 1)
 #+END_SRC
 
-Set up keys
+* Global ignored search directories
 #+BEGIN_SRC emacs-lisp
 
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-  (define-key ac-complete-mode-map "\C-n" 'ac-next)
-  (define-key ac-complete-mode-map "\C-p" 'ac-previous)
-  (global-set-key (kbd "C-c f") 'projectile-find-file-in-directory)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-  (global-set-key (kbd "C-x g") 'magit-status)
-
-#+END_SRC
-
-Set some variables
-
-#+BEGIN_SRC emacs-lisp
-
-  (add-to-list 'ac-modes 'typescript-mode)
   (add-to-list 'grep-find-ignored-directories "node_modules")
   (add-to-list 'grep-find-ignored-directories "coverage")
   (add-to-list 'grep-find-ignored-directories "build")
-  (put 'upcase-region 'disabled nil)
 
 #+END_SRC
 
-Load custom scripts
+* Custom scripts
 #+BEGIN_SRC emacs-lisp
   (load "~/emacs-conf/save-buffers-kill-terminal-prompt.el")
   (load "~/emacs-conf/z80-mode.el")
   (load "~/emacs-conf/z80-loader.el")
   (load "~/emacs-conf/flycheck-typescript-eslint.el")
   (load "~/emacs-conf/erc-bnc.el")
-
 #+END_SRC
+* Bookmarks
+** emacs.org
+#+begin_src emacs-lisp
+    (with-current-buffer (find-file-noselect "~/emacs-conf/emacs.org")
+      (bookmark-set "emacs.org" t))
+#+end_src
+
+* Blog config
+Configure org-mode publish for Jekyll
+#+begin_src emacs-lisp
+(setq org-publish-project-alist
+      '(("blog"
+         :base-directory "~/neuro-sys.github.io/org"
+         :base-extension "org"
+         :publishing-directory "~/neuro-sys.github.io/_posts"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4
+         :html-extension "html"
+         :body-only t ;; Only export section between <body> </body>
+         )))
+#+end_src
