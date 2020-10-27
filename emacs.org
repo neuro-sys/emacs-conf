@@ -56,12 +56,11 @@ Add Melpa package repository.
 
 *** Tide
   #+BEGIN_SRC emacs-lisp
-        (use-package tide 
-          :ensure t
-          :config
-          (tide-setup)
-          (tide-mode +1)
-          (tide-hl-identifier-mode +1))
+    (use-package tide
+      :ensure t
+      :config
+      (tide-mode +1)
+      (tide-hl-identifier-mode +1))
   #+END_SRC
 
 ** company-mode
@@ -179,7 +178,7 @@ Add Melpa package repository.
   (use-package zerodark-theme
     :ensure t
     :config
-    (load-theme 'zerodark-theme t)
+    (load-theme 'zerodark t)
     (zerodark-setup-modeline-format))
 #+end_src
 *** VScode Dark Plus Theme
