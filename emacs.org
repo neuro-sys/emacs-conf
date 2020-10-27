@@ -168,18 +168,27 @@ Add Melpa package repository.
 ** Themes
 *** Zenburn
   #+BEGIN_SRC emacs-lisp
-  (use-package zenburn-theme
-    :ensure t
-    :config (load-theme 'zenburn t))
+    (use-package zenburn-theme
+      :ensure t
+      :config ;; (load-theme 'zenburn t)
+      )
   #+END_SRC
 
+*** Zerodark
+#+begin_src emacs-lisp
+  (use-package zerodark-theme
+    :ensure t
+    :config
+    (load-theme 'zerodark-theme t)
+    (zerodark-setup-modeline-format))
+#+end_src
 *** VScode Dark Plus Theme
   #+BEGIN_SRC emacs-lisp
-    (use-package vscode-dark-plus-theme
-      :ensure t
-      :config
-      ;; (load-theme 'vscode-dark-plus t)
-      )
+        (use-package vscode-dark-plus-theme
+          :ensure t
+          :config
+          ;; (load-theme 'vscode-dark-plus t)
+          )
   #+END_SRC
 #+END_SRC
 
