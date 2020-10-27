@@ -55,7 +55,11 @@ Add Melpa package repository.
 
 *** Tide
   #+BEGIN_SRC emacs-lisp
-  (use-package tide :ensure t)
+    (use-package tide 
+      :ensure t
+      :config
+      (tide-setup)
+      (tide-mode +1))
   #+END_SRC
 
 ** Jest
