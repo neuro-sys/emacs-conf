@@ -1,5 +1,6 @@
 #+TITLE: Emacs Configuration
 #+OPTIONS: num:nil
+#+STARTUP: hidestars
 
 * First things first
 
