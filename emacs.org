@@ -55,13 +55,21 @@ Add Melpa package repository.
 
 *** Tide
   #+BEGIN_SRC emacs-lisp
-    (use-package tide 
-      :ensure t
-      :config
-      (tide-setup)
-      (tide-mode +1))
+        (use-package tide 
+          :ensure t
+          :config
+          (tide-setup)
+          (tide-mode +1)
+          (tide-hl-identifier-mode +1))
   #+END_SRC
 
+** company-mode
+#+begin_src emacs-lisp
+  (use-package company
+    :ensure t
+    :config
+    (company-mode +1))
+#+end_src
 ** Jest
 #+begin_src emacs-lisp
   (use-package jest
