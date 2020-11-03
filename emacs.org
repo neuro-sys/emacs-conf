@@ -178,16 +178,16 @@ Add Melpa package repository.
   (use-package zerodark-theme
     :ensure t
     :config
-    (load-theme 'zerodark t)
-    (zerodark-setup-modeline-format))
+    ;; (load-theme 'zerodark t)
+    ;; (zerodark-setup-modeline-format)
+    )
 #+end_src
 *** VScode Dark Plus Theme
   #+BEGIN_SRC emacs-lisp
-        (use-package vscode-dark-plus-theme
-          :ensure t
-          :config
-          ;; (load-theme 'vscode-dark-plus t)
-          )
+    (use-package vscode-dark-plus-theme
+      :ensure t
+      :config
+      (load-theme 'vscode-dark-plus t))
   #+END_SRC
 #+END_SRC
 
@@ -260,15 +260,33 @@ Add Melpa package repository.
 * Blog config
 Configure org-mode publish for Jekyll
 #+begin_src emacs-lisp
-(setq org-publish-project-alist
-      '(("blog"
-         :base-directory "~/neuro-sys.github.io/org"
-         :base-extension "org"
-         :publishing-directory "~/neuro-sys.github.io/_posts"
-         :recursive t
-         :publishing-function org-html-publish-to-html
-         :headline-levels 4
-         :html-extension "html"
-         :body-only t ;; Only export section between <body> </body>
-         )))
+  (setq org-publish-project-alist
+        '(("blog"
+           :base-directory "~/neuro-sys.github.io/org"
+           :base-extension "org"
+           :publishing-directory "~/neuro-sys.github.io/_posts"
+           :recursive t
+           :publishing-function org-html-publish-to-html
+           :headline-levels 4
+           :html-extension "html"
+           :body-only t ;; Only export section between <body> </body>
+           )))
 #+end_src
+
+* Exocortex: Org Capture 
+
+  Set the capture template for Inbox entries pointing to
+  =~/exocortex/inbox.org= with the timestamp.
+
+  #+begin_src emacs-lisp
+    (setq org-capture-templates
+        '(("i" "Inbox" entry (file+headline "~/exocortex/inbox.org" "Inbox")
+           "* %t %?\n")))
+  #+end_src
+
+  Set the global key for capturing notes
+  
+  #+begin_src emacs-lisp
+    (global-set-key (kbd "C-c c") 'org-capture)
+
+  #+end_src
