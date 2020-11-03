@@ -256,6 +256,12 @@ Add Melpa package repository.
     (with-current-buffer (find-file-noselect "~/emacs-conf/emacs.org")
       (bookmark-set "emacs.org" t))
 #+end_src
+** exocortex
+
+#+begin_src emacs-lisp
+    (with-current-buffer (find-file-noselect "~/exocortex/")
+      (bookmark-set "exocortex" t))
+#+end_src
 
 * Blog config
 Configure org-mode publish for Jekyll
