@@ -1,4 +1,5 @@
-# -*- eval: (progn (git-auto-commit-mode 1) (setq gac-automatically-push-p t)) -*-
+# -*- eval: (git-auto-commit-mode 1) -*-
+# -*- eval: (setq gac-automatically-push-p t) -*-
 #+TITLE: Emacs Configuration
 #+OPTIONS: num:nil
 #+STARTUP: hidestars
