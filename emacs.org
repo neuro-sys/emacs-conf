@@ -1,4 +1,4 @@
-# -*- eval: (git-auto-commit-mode 1); gac-automatically-push-p: t; -*-
+# -*- eval: (git-auto-commit-mode 1); gac-automatically-push-p: t; gac-debounce-interval: 3; -*-
 #+TITLE: Emacs Configuration
 #+OPTIONS: num:nil
 #+STARTUP: hidestars
