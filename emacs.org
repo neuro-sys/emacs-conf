@@ -300,4 +300,3 @@ Configure org-mode publish for Jekyll
   #+end_src
 
 
-Foo
