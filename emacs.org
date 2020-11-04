@@ -192,6 +192,12 @@ Add Melpa package repository.
   #+END_SRC
 #+END_SRC
 
+** git-auto-commit-mode
+
+#+begin_src emacs-lisp
+  (use-package git-auto-commit-mode
+    :ensure t)
+#+end_src
 * Global Variables
 
 #+BEGIN_SRC emacs-lisp
