@@ -296,3 +296,5 @@ Configure org-mode publish for Jekyll
     (global-set-key (kbd "C-c c") 'org-capture)
 
   #+end_src
+
+This is a test change.
