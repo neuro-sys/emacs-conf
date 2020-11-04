@@ -3,6 +3,8 @@
 #+OPTIONS: num:nil
 #+STARTUP: hidestars
 
+* Features that I use often
+
 * First things first
 
 Turn off the deprecation warning for 'cl used by many packages
