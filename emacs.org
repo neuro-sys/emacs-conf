@@ -1,3 +1,4 @@
+;; -*- eval: (git-auto-commit-mode 1) -*-
 #+TITLE: Emacs Configuration
 #+OPTIONS: num:nil
 #+STARTUP: hidestars
@@ -297,4 +298,3 @@ Configure org-mode publish for Jekyll
 
   #+end_src
 
-This is a test change.
