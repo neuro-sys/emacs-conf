@@ -193,7 +193,8 @@ Add Melpa package repository.
 #+END_SRC
 
 ** git-auto-commit-mode
-
+   I use this package to automatically commit and push certain files that
+   I edit often such as this one.
 #+begin_src emacs-lisp
   (use-package git-auto-commit-mode
     :ensure t)
